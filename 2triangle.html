@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            //내 풀이
+            function solution(a, b, c){
+                let answer="YES", max;
+                let list = [a,b,c]
+                a_list = list.sort()
+                if (a_list[2]>=a_list[0]+a_list[1]) answer="NO"
+                return answer;
+            }
+            //쌤 풀이
+            function solution(a, b, c){
+                let answer="YES", max;
+                let sum = a+b+c;
+                if (a>b) max=a; 
+                else max = b; 
+                if(c>max) max =c; 
+                if((sum-max)<=max) answer="NO"
+                return answer;
+            }
+
+            console.log(solution(13, 33, 17));
+        </script>
+    </body>
+</html>
