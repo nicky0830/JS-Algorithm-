@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            //내풀이 : 오류
+            function solution(arr){
+                let sum =[]
+                for(let i=0;i<arr.length;i++){ 
+                    if (arr[i]%2 != 0){ 
+                        newsum = sum.append(arr[i])
+                        oddsum = sum(newsum)
+                        min = sum.min()
+                        return oddsum, min;
+                    } 
+                }
+            }
+            // arr에서 홀수인 애들을 sum에 하나씩 더해서 합을 구하고 
+            // 고른 홀수 중 최소값을 찾는 프로그램 작성 
+            
+            function solution(arr){
+                let answer=[];// 답 2개 그러므로 배열로 만들어서 return
+                let sum=0, min=Number.MAX_SAFE_INTEGER;
+                for(let x of arr){ 
+                    if (x%2===1){ // == 또는 ===(type까지 비교) 중 하나로 통일을 해야 한다
+                     sum+=x; // sum=0을 for반복문 안에 넣으면 계속 reset이 되므로 
+                            
+                     if (x<min) min=x;
+                    }
+                } 
+                answer.push(sum);
+                answer.push(min);
+                return answer;
+            }
+            arr=[12, 77, 38, 41, 53, 92, 85];
+            console.log(solution(arr));
+        </script>
+    </body>
+</html>
