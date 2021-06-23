@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(a, b, c){
+            let answer; 
+            if(a<b) answer =a; 
+            else answer = b; // 그냥 비교에서 그치는 게 아니라 계속
+            if(c<answer) answer = c; // 거짓이면 그대로 넘어가서 위의 answer값이 확정된다
+
+            return answer;
+            } 
+
+            console.log(solution(2,5,1));
+            
+        </script>
+    </body>
+</html>
