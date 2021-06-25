@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            // 내풀이: 입력값을 어떻게 처리해야 하는거지?
+            function solution(day, arr){
+                let answer=0;
+                // 자바스크립트는 for(){}, if(){} : 괄호를 써줘야! 
+                // for (let a in arr)해서 틀림  // in은 객체 프로퍼티 키 열거 전용!
+                for (let a in arr){ 
+                    if (a%10 === day){
+                        answer += 1; 
+                    }
+                }
+                return answer;
+            }
+            // 쌤 풀이
+
+            function solution(day, arr){
+                let answer=0;
+            // for (let a of arr) - of는 이터러브 순회 전용
+                for (let a of arr){ 
+                    if (a%10 === day) answer++;
+                }
+                return answer;
+            }
+            arr = [25, 23, 11, 47, 53, 17, 33]
+            console.log(solution(3, arr));
+
+            // foreach 반복문은 오직 Array 객체에서
+            // items.forEach(function(item) { console.log(item); });
+            // for in 반복문 : 객체의 모든 열거 가능한 속성에 대해 반복
+            // (key값에 접근 가능, value는 접근 불가능)
+            // for of 반복문 : [Symbol.iterator] 속성을 가지는 컬렉션 전용
+
+
+
+
+
+        </script>
+    </body>
+</html>
