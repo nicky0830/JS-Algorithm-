@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+<body>
+    <script> 
+    // forEach, map, filter, reduce
+    // 네개의 메서드 모두 고차함수 : 자신의 매개변수에 함수를 전달받는다
+    
+    // function forEach(predicate, thisArg){
+        // for(let i=0; i<a.length; i++){
+            // predicate(a[i],i); 값, 인덱스 
+
+
+        // }
+    // }
+        // 두개의 인자를 받는다 (predicate 변수에 함수,thisArg변수에 함수 내부에서 this로 사용할 것을 임의로 받는다)
+        // thisArg는 인자를 받지 않아도 됨
+        // 배열을 하나하나 탐색할 때 for반복문을 사용하지 않고 사용할 수 있는 메서드 
+
+   let answer =  a.forEach(function(v,i, this){  
+    // forEach는 값과 인덱스 ,this에 thisArg를 바인딩해줘서 마지막에 나오는 [1,2]를 this로 사용할 수 있다
+    console.log(v,i);
+    }, [1,2]); // thisArg 
+
+    let answer = a.map(function(v,i){ 
+        if(v%2==0)return v; //map이 아니 map에 넣은 function의 내용, v로 a의 원소를 하나하나 받아서 계산
+        // 이때 if로 반을 거르는 거 같지만 map은 a의 모든 원소에 적용하기 때문에 홀수인 값은 undefined로 나온다(아예 안 나오는 것이 아니라!)
+    },[1,2]); 
+     // 요소들을 하나하나 탐색하면서 새로운 배열을 만들어주는것
+    // function map(predicate, thisArg){ 
+    //     let list = []; 
+    //     for (let i=0; i<a.length; i++){ 
+    //         list.push(predicate(a[i],i));// 인자로 넣어주는 predicate()함수에 값, 인덱스 번호
+    //     }
+    //     return list;
+    // }
+    
+    let answer = a.filter(function(v,i){ // 새로운 배열을 생성해서 return받는데 
+        // map과 달리 a와 같은 길이일 필요 없이 콜백함수의 리턴 요소가 참일 때만 필터링해서 새로운 배열을 만든다 
+        return v%2==0;  //참이 return되었을 때만 
+    }, [1,2])
+
+    // // function filter(predicate, thisArg){ 
+    //     Let list =[]; 
+    //     for(let i=0; i<a.length;i++){ 
+    //         if(predicate(a[i],i)) list.push(a[i]); // if조건문으로 true면 list에 push해서 새로운 배열을 만든다 
+    //     } 
+    //     return list;
+    // }
+
+    let answer = a.reduce(function(acc,v){  //콜백함수(acc:누적, v:원본배열의 원소들) 
+        // map, filter처럼 새로운 배열이 아니라 값을 생성하는 함수
+        return acc+v; 
+    },0); // 초기화하는 값
+
+    // function reduce(predicate, val){ // 함수, 값
+    //     let result = val; //초기화 
+    //     for (let i=0; i<a.length;i++){
+    //         result = predicate(result,a[i]); //predicate에 위의 function(acc,v)로 result, a[i]들어가서 
+    //         //a 배열의 원소 하나하나 인덱싱해서 acc(result)에
+    //         //  v(a[i]를 더한다 그러므로 result에 누적으로 function의 결과값이 들어가고 반복)
+    //         //acc에 result, v에 a[i]
+    //     }
+    //     return result;
+    // }
+    console.log(answer)
+
+    a = [10,11,12,13,14,15]; 
+    </script>
+</body>
+</html>
