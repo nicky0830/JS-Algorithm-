@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //내 풀이
+    //파이썬 len()과 다르게 자바스크립트는 .length로 길이를 구한다 
+    //  function solution(s){
+    //     let max = Number.MIN_SAFE_INTEGER;
+    //      for (let i=0; i<str.length; i++){
+    //          if (s[i].length>max){ 
+    //              max = s[i].length // 이때 i값을 구할 수 있는 방법? 
+    //          }
+    //      }
+    //      return s[i]
+    //  }
+
+     //쌤 풀이 
+     function solution(s){
+         let answer, max = Number.MIN_SAFE_INTEGER;  //내 풀이와의 차이: answer, max를 따로 
+         for (let x of s){ 
+             if(x.length>max){
+                 max = x.length; 
+                 answer = x;  //max가 될 때의 x값을 구해주는 것
+             }
+         }
+         return answer;
+     }
+     let str = ["teacher","time","student","beautiful","good"]
+     console.log(solution(str))
+
+    </script>
+    
+</body>
+</html>
