@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){   
+                //내 풀이 : 대문자로 변환해서 원본이랑 일치하는지 확인
+            //     let answer =0;   
+            //     for (let i=0; i<s.length;i++){
+            //         if (s[i] === s[i].toUpperCase()) answer++;
+            //         //s[i]로 인덱싱을 해야 uppercase를 할 수 있으니까
+            //     }
+            // }
+            
+            
+            //*charCodeAt() : 아스키 넘버
+            //*대문자는 65~90(A-Z), 소문자는 97~122(a-z)
+                 let answer=0;
+                for(let x of s){
+                    //방법1 : 아스키넘버로 대문자면 
+                    let num=x.charCodeAt();
+                    if(num>=65 && num<=90) answer++;
+                    //방법2 : 대문자로 일치 여부 확인
+                    if(x===x.toUpperCase()) answer++; 
+                }
+
+                return answer;
+            }
+
+                let str = "KoreaTimeGood" 
+                console.log(solution(str))
+            
+        </script>
+    </body>
+</html>
