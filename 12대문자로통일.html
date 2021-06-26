@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            //내 풀이: toUpperCase()는 매서드니까 ()를 쓰는 거 잊지 말기
+            function solution(s){
+                let answer = "";
+                for (let x of s) { 
+                    answer += x.toUpperCase();
+
+                }  
+                return answer
+            } 
+
+            function solution(s){
+            let answer="";
+                for(let x of s){
+                    let num=x.charCodeAt(); //아스키 코드를 구하고 
+                    if(num>=97 && num<=122) answer+=String.fromCharCode(num-32); 
+                    //소문자면 32를 빼면 대문자가 된다 
+                    //String.fromCharCode(num) : 아스키 코드를 이용해서 문자로 만들 수 있다 
+                    else answer+=x;
+
+                    //if(x===x.toLowerCase()) answer+=x.toUpperCase();
+                    //else answer+=x;
+                    //이건 소문자만 대문자로 바꾸는 것
+                }
+
+                return answer;
+
+            }
+            
+            let str="ItisTimeToStudy";
+            console.log(solution(str));
+        </script>
+    </body>
+</html>
+
