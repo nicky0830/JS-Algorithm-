@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            //내풀이 : 맞았다!
+            function solution(s,x){
+                let sum = 0
+                for (let a of s){ 
+                    if (a === x){ 
+                        sum += 1;     //sum++로 해도 됨, 한줄이니까 {}없이 써도 됨! 
+                    }
+                    return sum
+                }
+
+            }
+            let str = "COMPUTERPROGRAMMING"
+            let r = "R"
+            console.log(solution(str, r))
+
+
+//             //쌤풀이
+            function solution(s, t){
+                let answer=0;
+                for(let x of s){
+                    if(x===t) answer++;
+                }
+                return answer;
+            }
+            
+            let str="COMPUTERPROGRAMMING";
+            console.log(solution(str, 'R'));
+//         </script>
+//     </body>
+// </html>
+
+
+// <html>
+//     <head>
+//         <meta charset="UTF-8">
+//         <title>출력결과</title>
+//     </head>
+//     <body>
+//         <script>
+            function solution(s, t){
+                let answer=s.split(t).length; 
+                //split:t를 구분자로 분리시켜서 문자열 배열화 ["Compute","p","og","amming"]
+                return answer-1; //구분자가 3개니까 배열이 4개 (구분자의 개수= 배열-1)
+            }
+            
+            let str="COMPUTERPROGRAMMING";
+            console.log(solution(str, 'R'));
+        </script>
+//     </body>
+// </html>
