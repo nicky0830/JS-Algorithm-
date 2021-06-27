@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // set만드는 법: const set = new Set(배열) 
+        // 초기화하기 전에 부를 수 없음. 
+        // 함수 안에 초기화한 건 함수 밖에서 부를 수 없음
+        // string에서 제공하는 indexOf 함수 : 해당 문자열이 첫번째로 나타나는 위치 index를 리턴
+        //indexOf('k',1) : 1번 인덱스부터 찾는다(1번은 포함)
+        // 그러므로 0번에 있어도 그 뒤에 있는 인덱스값 반환
+        // 없으면 -1이 반환된다
+        function solution(s) {
+      
+
+            // // 내 풀이: 정답 [set으로 중복 제거, set안 원소와 일치 시 해당 인덱스인 단어들 모음
+            // let set = new Set(s)
+            // let answer = ""
+            // for (let x of set){ 
+            //     let index = s.indexOf(x)
+            //     answer += s.charAt(index)
+
+            // }
+            // return answer;
+            // }
+
+            //쌤 풀이: indexOf로 찾은 인덱스와 해당 인덱스가 같은 글자들만 모아서 단어
+            let answer="";
+                //console.log(s.indexOf("K"));
+                for(let i=0; i<s.length; i++){
+                    //console.log(s[i], i, s.indexOf(s[i]));
+                    if(s.indexOf(s[i])===i) answer+=s[i];
+                }
+                return answer;
+            
+           
+        }
+
+        let str = "ksekkset"
+        console.log(solution(str))
+    </script>
+</body>
+
+</html>
