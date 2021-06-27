@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //내 풀이: indexOf() - 배열에서도 똑같이 사용 가능
+        // but answer에 배열로 안 들어가고 문자열로 들어간다 
+        function solution(s){
+            let answer = [];
+            for(let i=0; i<s.length; i++){
+                if (s.indexOf(s[i])===i){
+                    answer += s[i]+",";
+                }
+            } return answer;
+        }
+
+        //쌤 풀이: filter사용 - 조건문이 참인 값들만 모아서 새 배열 만드는
+        // 내 풀이와의 차이: 반복문이 아니라 filter사용 
+        //filter(function (v,i))에서 v는 원소 i는 인덱스
+        // filter는 함수(이 인자로 받는 함수를 콜백함수라고 한다)를 인자로 받는 고차함수, 새로운 배열을 만드니까 지금 적합!
+        function solution(s){  
+                let answer;
+                //console.log(s.indexOf("time"));
+                answer=s.filter(function(v, i){ // v(원소), i(인덱스)
+                    return s.indexOf(v)===i; // 콜백함수의 내부 //if (s.indexOf(v)===i) return true;
+                });  //return값이 참일때만 나온다
+                return answer;
+            }
+
+        let str = ["good","time","good","time","student"]
+        console.log(solution(str))
+
+    </script> 
+</body>
+</html>
