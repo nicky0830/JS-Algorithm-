@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // #1.
+        function solution(a,b,c){
+            let min;
+            if(a<b) min = a; // single statement context에서는 초기화 못한다
+            else min = b;
+            
+            if (min>c)min = c;
+            
+            return min;
+            }
+
+        // console.log(solution(6,5,11))
+
+        // #2.
+        function solution(a,b,c){ //의미적으로 반환 받으려는 answer는 yes, no니까 
+                                //max, answer로 재정의하는 것이 좋음
+            let sum = a+b+c; 
+            let answer; //let answer="YES", max
+            if (a<b) answer=b; 
+            else answer = a; 
+            if (answer<c) answer =c;
+            
+            if (answer>(sum-answer))return "NO"; //answer = "NO" 
+            else return "YES";
+
+        }
+        // console.log(solution(6,7,11))
+        // console.log(solution(13,33,17))
+
+        // #3.
+        function solution(s){
+            if (s%12!==0) return Math.ceil(s/12) // 경우를 둘로 나눌 필요가 없다. 무조건 올림하면 됨!
+            else return s/12 
+            
+            // let answer = Math.ceil(s/12)
+            // return answer
+        }
+
+        // console.log(solution(178))
+
+        //#4. 
+        function solution(s){ 
+            let sum=0; 
+            for(let i=1; i<=s; i++){
+                sum += i
+            }
+            return sum;
+        }
+        // console.log(solution(10))
+
+        // #5. 
+        function solution(s){
+            let min = Number.MAX_SAFE_INTEGER; //초기화 하나의 let으로 가능
+            for(let x of s){  
+                if (x<min) min = x;
+            } return min; 
+        }
+
+        // function solution(arr){         
+        // 방법1)let answer=Math.min(...arr);//배열을 펼쳐줘서 인자로 넣는다, math모듈에서 min값을 구해준다 
+        // 방법2)answer = Math.min.apply(null,arr); 전개 연산자를 쓰지 않고 사용할 수 있는 다른 방법
+        // return answer;
+        //     }
+
+        // let arr =[5,3,7,11,2,15,17]
+        // console.log(solution(arr))
+
+        // #6. 
+        function solution6(s){
+            let answer=[]
+            let sum=0, min=Number.MAX_SAFE_INTEGER; //답이 2개니까 []로!
+            for(let x of s){
+                if(x%2 === 1){ 
+                    sum +=x;
+                    if(x<min) min =x;
+                }
+            } 
+            //답이 2개니까 answer에 push해서 넣고!
+            answer.push(sum);
+            answer.push(min);
+            return answer;
+        }
+        // let arr = [12,77,38,41,53,92,85]
+        // console.log(solution6(arr))
+
+        // #7. 
+        function solution(d,a){ 
+            let answer=0;
+            for (let x of a){ 
+                if (x%10 == d)answer++;
+            }
+            return answer;
+        }
+
+        // let day = 0;
+        // let arr = [12,20,54,30,87,91,30];
+        // console.log(solution(day, arr));
+
+        // #8. 
+        //splice함수 : 원하는 위치에 요소 추가하거나 삭제 
+        // 삭제 : 배열.splice(index,개수), 추가: 배열.splice(index,0,"N") - index자리에 "N"을 넣는 방법
+
+        function solution(arr){
+            let answer = arr;
+            let sum = answer.reduce((a,b)=>a+b,0) // 다 합하기 위해 reduce()함수 쓰기
+        
+            for(let i=0;i<8;i++){
+                for(let j=i+1;j<9;j++){ //j=i+1로 해야 하나씩 더 큰 애들이 돌아옴
+                    if ((sum-(arr[i]+arr[j])) ==100){
+                        answer.splice(i,1); //index번호
+                        answer.splice(j,1);                   
+                    }
+                }
+            }
+            return answer;
+        }
+        // let arr = [20,7,23,19,10,15,25,8,13];
+        // console.log(solution(arr));
+
+        // #9. 
+        //str.replace(/A/g,"#")
+        function solution(s){ 
+            let answer = ""
+            for(let x of s){
+                if (x === "A")answer+="#"
+                else answer+=x
+            }return answer;
+        }
+
+        function solution(s){ 
+            let answer = s.replace(/A/g,"#");
+            return answer;
+        }
+
+        // let arr = "BANANA"
+        // console.log(solution(arr))
+        
+        // #10.
+        function solution(s, d){ 
+            let answer=0; 
+            for(let x of s){ 
+                if (x === d)answer++;
+            }return answer;
+        }
+
+        // let str = "COMPUTERPROGRAMMING"
+        // let r = "C"
+        
+//쌤 풀이
+        function solution(s,t){ 
+            let answer=s.split(t).length;
+            return answer-1;
+        }
+        // console.log(solution(str,r));
+// //#11.
+//     function solution(s){
+//     let answer=0;
+//     for (let x of s){ 
+//         if (x === x.toUpperCase())answer++;   //toUpperCase()잊지 말기!
+//     } return answer;
+
+    // }
+    function solution(s){ 
+        let answer =0;
+        for(let x of s){ 
+            // let answer =0;for반복문 안에 answer초기화하면 "undefined"가 된다
+            let char = x.charCodeAt()
+            if (char>=65 && char<=90)answer++;
+        }return answer;
+    }
+    let st = "KoreaTimeGood"
+    // console.log(solution(st))
+
+    //초기화와 scope에 대해 찾아보기
+
+    //#12. 
+    function solution(s){
+        let answer = "";
+        answer = s.toUpperCase()
+        return answer;
+    }
+    let str = "ItisTimeToStudy"
+    // console.log(solution(str))
+
+    //#13. 
+    function solution(s){ 
+        let answer = "";
+        for(let x of s){ 
+            if(x === x.toUpperCase())answer+=x.toLowerCase();
+            else answer+=x.toUpperCase();
+        }return answer;
+    }
+
+    // console.log(solution("StuDY"))
+
+    //#14. 
+    //두번다 같은 오답을 냈음. 생각 바꾸기! 
+    //구하려는 답을 answer로 구하려고 생각하기 
+    function solution(a){
+        let answer, max = Number.MIN_SAFE_INTEGER;
+        for(let x of a){ 
+            if (x.length>max){
+            // 구하려하는 건 각각의 원소니까 x를 answer로 하면 됨. 
+            max = x.length;
+            answer = x;
+            }
+
+        } return answer;
+
+    }
+    let arr = ["teacher","time","student", "beautiful","good"];
+    // console.log(solution(arr));
+
+    //#15. 
+    //.slice하면 이상, 미만(파이썬 슬라이싱[a:b]랑 같음])
+    //.substr(잘라올 첫 위치값, 문자열의 길이)
+    function solution(s){
+        let answer;
+        let len = s.length; //length()아니다!
+        let index = Math.floor(len/2); // 몫 / index는 if, else에 둘 다 쓰니까 전역으로
+        if(len%2===1){  //홀수면 
+            answer= s[index]; //답은 하나니까 str에 몫으로 인덱싱
+        }else answer = s.slice(index-1,index+1);
+        return answer;
+    }
+    // console.log(solution("study"))
+    // console.log(solution("good"))
+
+
+    //#16. 
+    //indexOf("제일 처음에 나왔을 때의 인덱스를 찾고 싶은 글자를 넣어야")
+    function solution(s){
+        let answer ="";
+        for(let i=0;i<s.length;i++){ //let i=0!!
+            if(s.indexOf(s[i])===i) answer+=s[i]; 
+        }return answer;
+    }
+
+    let sr = "ksekkset"
+    console.log(solution(sr));
+    
+    //#17. 
+    function solution(s){
+        let answer=[];  //새 배열이니까
+        answer = s.filter(function (v,i){
+            return s.indexOf(v) === i; 
+        });
+        return answer;
+    }
+
+    let art = ["good","time","good","time","student"];
+    console.log(solution(art));
+
+
+</script>
+    
+</body>
+</html>
